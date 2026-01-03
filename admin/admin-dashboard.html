@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin – Enquiries</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border-bottom: 1px solid #ddd; }
+    th { background: #f5f5f5; text-align: left; }
+    button { padding: 6px 10px; }
+  </style>
+</head>
+<body>
+
+<h2>Customer Enquiries</h2>
+<button onclick="logout()">Logout</button>
+
+<p id="loading">Loading enquiries...</p>
+
+
+<table id="enquiryTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Service</th>
+      <th>Message</th>
+      <th>Date</th>
+      <th>Status</th>
+      
+
+
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script src="admin.js"></script>
+
+<script>
+const token = localStorage.getItem("adminToken");
+
+if (!token) {
+  alert("Not authorised");
+  window.location.href = "admin-login.html";
+}
+
+const loading = document.getElementById("loading");
+const tbody = document.querySelector("#enquiryTable tbody");
+
+fetch("http://localhost:5000/api/enquiries", {
+  headers: {
+    "Authorization": "Bearer " + token
+  }
+})
+  .then(res => {
+    if (res.status === 401) {
+      localStorage.removeItem("adminToken");
+      window.location.href = "admin-login.html";
+      return;
+    }
+    return res.json();
+  })
+  .then(data => {
+    loading.style.display = "none";
+
+    if (!data || data.length === 0) {
+      loading.textContent = "No enquiries yet.";
+      loading.style.display = "block";
+      return;
+    }
+
+    data.forEach(e => {
+      const row = document.createElement("tr");
+row.innerHTML = `
+  <td>${e.name}</td>
+  <td>${e.phone}</td>
+  <td>${e.email || ""}</td>
+  <td>${e.service_type}</td>
+  <td>${e.message || ""}</td>
+  <td>${new Date(e.created_at).toLocaleString()}</td>
+  <td>
+    ${
+      e.contacted
+        ? "<span style='color:green;font-weight:bold'>✔ Contacted</span>"
+        : `<button onclick="markContacted(${e.id})">Mark Contacted</button>`
+    }
+  </td>
+`;
+
+      tbody.appendChild(row);
+    });
+  })
+  .catch(err => {
+    loading.textContent = "Server error. Try again later.";
+    console.error(err);
+  });
+
+function markContacted(id) {
+  fetch(`http://localhost:5000/api/enquiries/${id}/contacted`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": "Bearer " + localStorage.getItem("adminToken"),
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Failed with status " + res.status);
+      }
+      return res.json();
+    })
+    .then(() => {
+      alert("Marked as contacted");
+      location.reload();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Failed to update enquiry");
+    });
+}
+
+
+  function logout() {
+    localStorage.removeItem("adminToken");
+    window.location.href = "admin-login.html";
+  }
+</script>
+
+</body>
+</html>

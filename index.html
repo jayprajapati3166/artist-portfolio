@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artist Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <h2 class="logo">Ashok's Art</h2>
+
+  <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="art.html">Fine Art</a></li>
+    <li><a href="commercial.html">Commercial Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+<section class="hero-slider">
+  <div class="slide active" style="background-image: url('assets/hero/img3.jpg')">
+    <div class="slide-content">
+      <h1>Art that carries emotion.</h1>
+      <p>Portraits, sketches, and custom artworks crafted with care.</p>
+      <a href="art.html">View Artwork</a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image: url('assets/hero/commercial.jpg')">
+    <div class="slide-content">
+      <h1>Work that carries trust.</h1>
+      <p>Professional house & flat painting with clean finishes.</p>
+      <a href="commercial.html">View Services</a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image: url('assets/hero/img0.jpg')">
+    <div class="slide-content">
+      <h1>Premium materials. Professional finishes.</h1>
+      <p>We use trusted paint brands for durability and finish.</p>
+      <a href="contact.html">Get a Quote</a>
+    </div>
+  </div>
+
+  <div class="slider-controls">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+
+<section class="home-about reveal delay-1">
+  <div class="about-grid">
+
+    <div class="about-text">
+      <h2>About the Artist</h2>
+      <p>
+        With over 30 years of experience in fine art and professional painting,
+        Ashok Prajapati brings together creativity, discipline, and craftsmanship
+        in every piece of work.
+      </p>
+      <a href="about.html">Read more →</a>
+    </div>
+
+    <div class="about-photo">
+      <img src="assets/profile/ashok.jpeg" alt="Ashok Prajapati">
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="featured reveal delay-2">
+  <h2>Featured Work</h2>
+  <div class="featured-grid">
+    <img src="assets/art/img1.jpeg" alt="">
+    <img src="assets/art/img2.jpeg" alt="">
+    <img src="assets/art/img3.jpeg" alt="">
+  </div>
+  <a href="art.html">View full gallery →</a>
+</section>
+
+<section class="home-commercial reveal delay-3">
+  <h2>Professional Painting Services</h2>
+  <p>
+    Residential house and flat painting with clean finishes,
+    quality materials, and dependable service.
+  </p>
+
+  <div class="commercial-preview">
+    <img src="assets/commercial/img1.jpg" alt="Interior wall painting">
+    <img src="assets/commercial/img2.jpg" alt="Room painting work">
+    <img src="assets/commercial/img3.jpg" alt="House painting finish">
+  </div>
+
+  <a href="commercial.html">View commercial work →</a>
+</section>
+
+
+<section class="home-cta reveal delay-3">
+  <h2>Available for commissions & professional painting</h2>
+  <p>Portraits • Custom artwork • House & flat painting</p>
+  <a href="contact.html">Get in touch</a>
+</section>
+
+<section class="estimator">
+  <div class="estimator-box">
+    <h2>Get an instant painting estimate</h2>
+    <p>Quick cost estimate for house & flat painting</p>
+
+    <form id="estimatorForm">
+      <label>
+        Project Type
+        <select id="projectType" required>
+          <option value="">Select</option>
+          <option value="fresh">Fresh Painting</option>
+          <option value="repaint">Repainting</option>
+        </select>
+      </label>
+
+      <label>
+        Area Type
+        <select id="areaType" required>
+          <option value="">Select</option>
+          <option value="interior">Interior</option>
+          <option value="exterior">Exterior</option>
+        </select>
+      </label>
+
+      <label>
+        Total Area (sq ft)
+        <input type="number" id="area" placeholder="e.g. 1200" required />
+      </label>
+
+      <button type="submit">Calculate Estimate</button>
+    </form>
+
+    <div id="estimateResult" class="estimate-result"></div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <p>© 2025 Ashok P Prajapati. All artworks are original.</p>
+  <p>Available for commissions • House & flat painting • Custom artwork</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+
+
+
+</html>
