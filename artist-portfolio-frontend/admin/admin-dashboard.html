@@ -50,7 +50,7 @@ if (!token) {
 const loading = document.getElementById("loading");
 const tbody = document.querySelector("#enquiryTable tbody");
 
-fetch("http://localhost:5000/api/enquiries", {
+fetch("https://artist-portfolio-backend-ht7x.onrender.com/api/enquiries", {
   headers: {
     "Authorization": "Bearer " + token
   }
@@ -99,7 +99,7 @@ row.innerHTML = `
   });
 
 function markContacted(id) {
-  fetch(`http://localhost:5000/api/enquiries/${id}/contacted`, {
+  fetch(`https://artist-portfolio-backend-ht7x.onrender.com/api/enquiries/${id}/contacted`, {
     method: "PATCH",
     headers: {
       "Authorization": "Bearer " + localStorage.getItem("adminToken"),

@@ -9,8 +9,11 @@ const jwt = require("jsonwebtoken");
 
 const app = express();
 app.use(cors({
-  origin: "*"
+  origin: "*",
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
 
 app.use(express.json());
 

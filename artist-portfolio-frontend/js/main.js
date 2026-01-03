@@ -132,7 +132,7 @@ function stopSlider() {
 // start slider on load
 startSlider();
 
-// 🔴 CRITICAL: stop slider when user clicks a button
+//  CRITICAL: stop slider when user clicks a button
 document.querySelectorAll(".slide-content a").forEach(btn => {
   btn.addEventListener("click", () => {
     stopSlider();
@@ -219,7 +219,7 @@ if (contactForm) {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/enquiries", {
+      const res = await fetch("https://artist-portfolio-backend-ht7x.onrender.com/api/enquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

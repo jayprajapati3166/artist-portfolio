@@ -14,7 +14,7 @@ if (loginForm) {
     const error = document.getElementById("error");
 
     try {
-      const res = await fetch("http://localhost:5000/api/admin/login", {
+      const res = await fetch("https://artist-portfolio-backend-ht7x.onrender.com/api/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
