@@ -1,0 +1,7 @@
+# Backend
+artist-portfolio-backend/node_modules/
+artist-portfolio-backend/.env
+
+# General
+node_modules/
+.env
